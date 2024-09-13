@@ -2,7 +2,7 @@ version: '3'
 
 services:
   planka:
-    image: ghcr.io/plankanban/planka:latest
+    build: .
     restart: on-failure
     volumes:
       - user-avatars:/app/public/user-avatars
@@ -13,7 +13,7 @@ services:
     environment:
       - BASE_URL=http://localhost:3000
       - DATABASE_URL=postgresql://postgres@postgres/planka
-      - SECRET_KEY=notsecretkey
+      - SECRET_KEY=58a575013bbedbd917e883ef4931a66cb60423e3e8852e65657139ca91c8ca7df71e816b6651b35741817f83dcf60debbb14a0f190c3a888e08b2aa32a84cdd8
 
       # - TRUST_PROXY=0
       # - TOKEN_EXPIRES_IN=365 # In days
@@ -26,10 +26,10 @@ services:
       # Configure knex to accept SSL certificates
       # - KNEX_REJECT_UNAUTHORIZED_SSL_CERTIFICATE=false
 
-      # - DEFAULT_ADMIN_EMAIL=demo@demo.demo # Do not remove if you want to prevent this user from being edited/deleted
-      # - DEFAULT_ADMIN_PASSWORD=demo
-      # - DEFAULT_ADMIN_NAME=Demo Demo
-      # - DEFAULT_ADMIN_USERNAME=demo
+      - DEFAULT_ADMIN_EMAIL=demo@demo.demo # Do not remove if you want to prevent this user from being edited/deleted
+      - DEFAULT_ADMIN_PASSWORD=demo
+      - DEFAULT_ADMIN_NAME=Demo Demo
+      - DEFAULT_ADMIN_USERNAME=demo
 
       # - SHOW_DETAILED_AUTH_ERRORS=false # Set to true to show more detailed authentication error messages. It should not be enabled without a rate limiter for security reasons.
 
@@ -85,7 +85,7 @@ services:
       - POSTGRES_DB=planka
       - POSTGRES_HOST_AUTH_METHOD=trust
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U postgres -d planka"]
+      test: ['CMD-SHELL', 'pg_isready -U postgres -d planka']
       interval: 10s
       timeout: 5s
       retries: 5
