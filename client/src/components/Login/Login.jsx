@@ -3,9 +3,10 @@ import React, { useCallback, useEffect, useMemo, useRef } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { useTranslation } from 'react-i18next';
-import { Button, Form, Grid, Header, Message } from 'semantic-ui-react';
+import { Button, Form, Grid, Header, Message, Image } from 'semantic-ui-react';
 import { useDidUpdate, usePrevious, useToggle } from '../../lib/hooks';
 import { Input } from '../../lib/custom-ui';
+import logo from '../../assets/images/d.png';
 
 import { useForm } from '../../hooks';
 import { isUsername } from '../../utils/validator';
@@ -150,12 +151,8 @@ const Login = React.memo(
             <Grid verticalAlign="middle" className={styles.fullHeightPaddingFix}>
               <Grid.Column>
                 <div className={styles.loginWrapper}>
-                  <Header
-                    as="h1"
-                    textAlign="center"
-                    content={t('common.logInToPlanka')}
-                    className={styles.formTitle}
-                  />
+                  <Image centered src={logo} size="tiny" />
+                  <Header as="h1" textAlign="center" content={t('')} className={styles.formTitle} />
                   <div>
                     {message && (
                       <Message
@@ -196,6 +193,7 @@ const Login = React.memo(
                         </div>
                         <Form.Button
                           primary
+                          style={{ backgroundColor: '#16325B', color: 'white' }}
                           size="large"
                           icon="right arrow"
                           labelPosition="right"
@@ -234,13 +232,13 @@ const Login = React.memo(
           >
             <div className={styles.descriptionWrapperOverlay} />
             <div className={styles.descriptionWrapper}>
-              <Header inverted as="h1" content="Planka" className={styles.descriptionTitle} />
+              {/* <Header inverted as="h1" content="Plando" className={styles.descriptionTitle} />
               <Header
                 inverted
                 as="h2"
                 content={t('common.projectManagement')}
                 className={styles.descriptionSubtitle}
-              />
+              /> */}
             </div>
           </Grid.Column>
         </Grid>
