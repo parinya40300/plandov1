@@ -2,7 +2,7 @@ version: '3'
 
 services:
   planka:
-    build: .
+    image: poupla40300/plando-planka:latest
     restart: on-failure
     volumes:
       - user-avatars:/app/public/user-avatars
